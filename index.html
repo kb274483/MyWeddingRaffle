@@ -10,7 +10,23 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>">
 
     <link rel="icon" type="image/png" sizes="128x128" href="https://cdn-icons-png.flaticon.com/512/4051/4051670.png">
-
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'vsy3nrz',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+    <style>
+      body {
+        font-family: "wenwriting-monospaced", sans-serif !important;
+        font-weight: 600 !important;
+        font-style: normal !important;
+      }
+    </style>
   </head>
   <body>
     <!-- quasar:entry-point -->
