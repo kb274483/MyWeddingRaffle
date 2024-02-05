@@ -65,13 +65,15 @@ const start = () => {
   }, 3000);
   setTimeout(() => {
     catHandReady.value = 2
-  }, 4950);
+  }, 4500);
+  setTimeout(() => {
+    catHandSet.value = true
+  }, 4600);
   wheel.value.addEventListener('transitionend', wheelStop);
 }
 // 轉動結束
 const winItemIndex = ref(0);
 const wheelStop = () => {
-  catHandSet.value = true
   const segmentAngle = 360 / list.value.length;
   const style = window.getComputedStyle(wheel.value);
   const matrix = new WebKitCSSMatrix(style.transform);
@@ -90,6 +92,16 @@ const winningItems = computed(() => {
   return list.value.filter(item => item.isWin);
 });
 
+// 重置
+const reset = () => {
+  showAmei.value = false
+  catHandReady.value = 0
+  catHandSet.value = false
+  list.value.forEach(item => item.isWin = false);
+  wheel.value.style.transition = 'none';
+  wheel.value.style.transform = 'rotate(0deg)';
+}
+
 </script>
 <template>
   <div class="tw-mx-auto tw-justify-center tw-items-center tw-flex tw-w-[100vw] tw-h-[100vh] tw-relative"
@@ -100,6 +112,7 @@ const winningItems = computed(() => {
       backgroundRepeat: 'no-repeat',
     }"
   >
+    <span class="tw-absolute tw-bottom-0 tw-right-0 tw-block" @click="reset()">Reset</span>
     <div 
       class="tw-select-none tw-flex tw-justify-center tw-items-center tw-h-[40rem] tw-w-[40rem] tw-relative"
     > 
@@ -128,7 +141,7 @@ const winningItems = computed(() => {
       <div
         class="tw-w-[7rem] tw-h-[6rem] tw-absolute tw-transition-all tw-duration-500 tw-ease-linear tw-rotate-[10deg] tw-z-10 tw-scale-100 tw-top-[-1rem] tw-left-[18rem] "
         :class="{
-          'tw-opacity-100' : catHandSet ,
+          'tw-opacity-100' : catHandSet,
           'tw-opacity-0' : !catHandSet
         }"
       >
@@ -136,7 +149,7 @@ const winningItems = computed(() => {
       </div>
       <!--  -->
       <div id="wheel" ref="wheel"
-        class="tw-overflow-hidden tw-rounded-full tw-absolute tw-w-[40rem] tw-h-[40rem] tw-left-0 tw-top-0 tw-flex tw-justify-center tw-items-center tw-border-4 tw-border-rose-200 tw-bg-white tw-mt-12"
+        class="tw-overflow-hidden tw-rounded-full tw-absolute tw-w-[40rem] tw-h-[40rem] tw-left-0 tw-top-0 tw-flex tw-justify-center tw-items-center tw-border-4 tw-border-rose-200 tw-bg-rose-50 tw-mt-12"
       >
         <!-- 分割線 -->
         <div v-for="index in 10" :key="index"
@@ -162,8 +175,11 @@ const winningItems = computed(() => {
           class="tw-absolute" :class="{'tw-z-40': i.isWin}"
           :style="textPosition(index,i.isWin)"
         >
-          <span class="tw-font-bold tw-text-4xl tw-text-gray-700 tw-transition-all tw-duration-500"
-            :class="{'tw-text-8xl tw-text-orange-500': i.isWin}"
+          <span class="tw-font-bold tw-transition-all tw-duration-500"
+            :class="{
+              'tw-text-8xl tw-text-orange-500': i.isWin ,
+              'tw-text-4xl tw-text-gray-700': !i.isWin
+            }"
           >
             {{i.title}}
           </span>
