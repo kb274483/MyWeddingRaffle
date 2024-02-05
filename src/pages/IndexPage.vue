@@ -34,7 +34,7 @@ const calcRotation = (index) => {
 
 const textPosition = (index,isWin) => {
   const rotate = (-index * 360)/ list.value.length
-  let style = `rotate(${rotate}deg) translateY(-17.5rem)`;
+  let style = `rotate(${rotate}deg) translateY(-15.5rem)`;
   if(isWin){
     style += `translateY(7rem)`;
   } 
@@ -97,9 +97,11 @@ const reset = () => {
   showAmei.value = false
   catHandReady.value = 0
   catHandSet.value = false
+  winningItems.value = 0 
   list.value.forEach(item => item.isWin = false);
   wheel.value.style.transition = 'none';
   wheel.value.style.transform = 'rotate(0deg)';
+  wheel.value.removeEventListener('transitionend', wheelStop);
 }
 
 </script>
@@ -114,14 +116,14 @@ const reset = () => {
   >
     <span class="tw-absolute tw-bottom-0 tw-right-0 tw-block" @click="reset()">Reset</span>
     <div 
-      class="tw-select-none tw-flex tw-justify-center tw-items-center tw-h-[40rem] tw-w-[40rem] tw-relative"
+      class="tw-select-none tw-flex tw-justify-center tw-items-center tw-h-[36rem] tw-w-[36rem] tw-relative"
     > 
       <!-- 阿妹 -->
       <div
         class="tw-w-[26rem] tw-h-[26rem] tw-absolute tw-transition-all tw-duration-500 tw-ease-linear tw-scale-110"
         :class="{
-          'tw-top-[-9.5rem] tw-left-[1rem] tw-opacity-100 tw-scale-125' : showAmei ,
-          'tw-top-24 tw-left-0 tw-opacity-50 tw-scale-110' : !showAmei
+          'tw-top-[-7.5rem] tw-left-[1rem] tw-opacity-100 tw-scale-110' : showAmei ,
+          'tw-top-24 tw-left-0 tw-opacity-50 tw-scale-100' : !showAmei
         }"
       >
         <img src="src/assets/ameiHead.png" class="tw-w-full tw-absolute" alt="cat">
@@ -130,16 +132,16 @@ const reset = () => {
       <div
         class="tw-w-[7rem] tw-h-[6rem] tw-absolute tw-transition-all tw-duration-500 tw-ease-linear tw-rotate-[-15deg] tw-scale-110"
         :class="{
-          'tw-top-12 tw-left-[17.5rem] tw-opacity-50' : catHandReady === 0,
-          'tw-top-[-7rem] tw-left-[17.5rem] tw-opacity-100' : catHandReady === 1 ,
-          'tw-top-[1rem] tw-left-[16.5rem] tw-opacity-100' : catHandReady === 2 ,
+          'tw-top-12 tw-left-[16.5rem] tw-opacity-50' : catHandReady === 0,
+          'tw-top-[-7rem] tw-left-[16.5rem] tw-opacity-100' : catHandReady === 1 ,
+          'tw-top-[1rem] tw-left-[15.5rem] tw-opacity-100' : catHandReady === 2 ,
         }"
       >
         <img src="src/assets/catHandOne.png" class="tw-w-full tw-absolute" alt="cat">
       </div>
       <!-- 貓手 -->
       <div
-        class="tw-w-[7rem] tw-h-[6rem] tw-absolute tw-transition-all tw-duration-500 tw-ease-linear tw-rotate-[10deg] tw-z-10 tw-scale-100 tw-top-[-1rem] tw-left-[18rem] "
+        class="tw-w-[7rem] tw-h-[6rem] tw-absolute tw-transition-all tw-duration-500 tw-ease-linear tw-rotate-[10deg] tw-z-10 tw-scale-90 tw-top-[-1rem] tw-left-[17rem] "
         :class="{
           'tw-opacity-100' : catHandSet,
           'tw-opacity-0' : !catHandSet
@@ -149,11 +151,11 @@ const reset = () => {
       </div>
       <!--  -->
       <div id="wheel" ref="wheel"
-        class="tw-overflow-hidden tw-rounded-full tw-absolute tw-w-[40rem] tw-h-[40rem] tw-left-0 tw-top-0 tw-flex tw-justify-center tw-items-center tw-border-4 tw-border-rose-200 tw-bg-rose-50 tw-mt-12"
+        class="tw-overflow-hidden tw-rounded-full tw-absolute tw-w-[36rem] tw-h-[36rem] tw-left-0 tw-top-0 tw-flex tw-justify-center tw-items-center tw-border-4 tw-border-rose-200 tw-bg-rose-50 tw-mt-12"
       >
         <!-- 分割線 -->
         <div v-for="index in 10" :key="index"
-          class="tw-absolute tw-w-[2px] tw-h-[40rem] tw-bg-gray-500 tw-transform"
+          class="tw-absolute tw-w-[2px] tw-h-[36rem] tw-bg-gray-500 tw-transform"
           :style='calcRotation(index)'
         >
         </div>
@@ -177,8 +179,8 @@ const reset = () => {
         >
           <span class="tw-font-bold tw-transition-all tw-duration-500"
             :class="{
-              'tw-text-8xl tw-text-orange-500': i.isWin ,
-              'tw-text-4xl tw-text-gray-700': !i.isWin
+              'tw-text-8xl tw-text-red-600': i.isWin ,
+              'tw-text-3xl tw-text-gray-700': !i.isWin
             }"
           >
             {{i.title}}
@@ -186,7 +188,7 @@ const reset = () => {
         </div>
       </div>
       <div @click="start()" id="start" 
-        class="tw-absolute tw-cursor-pointer tw-border-gray-400 tw-w-20 tw-z-40 tw-top-[50%]"
+        class="tw-absolute tw-cursor-pointer tw-border-gray-400 tw-w-12 tw-z-40 tw-top-[50%]"
       >
         <img class="tw-w-full tw-h-full" src="src/assets/arrow.png" alt="arrow">
       </div>
