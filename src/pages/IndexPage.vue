@@ -108,7 +108,7 @@ const reset = () => {
 <template>
   <div class="tw-mx-auto tw-justify-center tw-items-center tw-flex tw-w-[100vw] tw-h-[100vh] tw-relative"
     :style="{
-      backgroundImage: `url(src/assets/flowerBg.png)`,
+      backgroundImage: `url(public/flowerBg.png)`,
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
@@ -126,7 +126,7 @@ const reset = () => {
           'tw-top-24 tw-left-0 tw-opacity-50 tw-scale-100' : !showAmei
         }"
       >
-        <img src="src/assets/ameiHead.png" class="tw-w-full tw-absolute" alt="cat">
+        <img src="public/ameiHead.png" class="tw-w-full tw-absolute" alt="cat">
       </div>
       <!-- 貓掌 -->
       <div
@@ -137,7 +137,7 @@ const reset = () => {
           'tw-top-[1rem] tw-left-[15.5rem] tw-opacity-100' : catHandReady === 2 ,
         }"
       >
-        <img src="src/assets/catHandOne.png" class="tw-w-full tw-absolute" alt="cat">
+        <img src="public/catHandOne.png" class="tw-w-full tw-absolute" alt="cat">
       </div>
       <!-- 貓手 -->
       <div
@@ -147,7 +147,7 @@ const reset = () => {
           'tw-opacity-0' : !catHandSet
         }"
       >
-        <img src="src/assets/catHandTwo.png" class="tw-w-full tw-absolute" alt="cat">
+        <img src="public/catHandTwo.png" class="tw-w-full tw-absolute" alt="cat">
       </div>
       <!--  -->
       <div id="wheel" ref="wheel"
@@ -163,7 +163,7 @@ const reset = () => {
         <div 
           class="tw-rounded-full tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full"   
           :style="[bckBoxStyle,{
-            backgroundImage: `url(src/assets/wheelBG.png)`,
+            backgroundImage: `url(public/wheelBG.png)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
@@ -190,7 +190,7 @@ const reset = () => {
       <div @click="start()" id="start" 
         class="tw-absolute tw-cursor-pointer tw-border-gray-400 tw-w-12 tw-z-40 tw-top-[50%]"
       >
-        <img class="tw-w-full tw-h-full" src="src/assets/arrow.png" alt="arrow">
+        <img class="tw-w-full tw-h-full" src="public/arrow.png" alt="arrow">
       </div>
     </div>
   </div>
