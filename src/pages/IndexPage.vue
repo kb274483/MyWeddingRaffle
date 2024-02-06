@@ -111,7 +111,7 @@ const reset = () => {
 <template>
   <div class="tw-mx-auto tw-justify-center tw-items-center tw-flex tw-w-[100vw] tw-h-[100vh] tw-relative"
     :style="{
-      backgroundImage: `url(${appBase}public/flowerBg.png)`,
+      backgroundImage: `url(${appBase}/flowerBg.png)`,
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
@@ -129,7 +129,7 @@ const reset = () => {
           'tw-top-24 tw-left-0 tw-opacity-50 tw-scale-100' : !showAmei
         }"
       >
-        <img :src="`${appBase}public/ameiHead.png`" class="tw-w-full tw-absolute" alt="cat">
+        <img :src="`${appBase}/ameiHead.png`" class="tw-w-full tw-absolute" alt="cat">
       </div>
       <!-- 貓掌 -->
       <div
@@ -140,7 +140,7 @@ const reset = () => {
           'tw-top-[1rem] tw-left-[15.5rem] tw-opacity-100' : catHandReady === 2 ,
         }"
       >
-        <img :src="`${appBase}public/catHandOne.png`" class="tw-w-full tw-absolute" alt="cat">
+        <img :src="`${appBase}/catHandOne.png`" class="tw-w-full tw-absolute" alt="cat">
       </div>
       <!-- 貓手 -->
       <div
@@ -150,7 +150,7 @@ const reset = () => {
           'tw-opacity-0' : !catHandSet
         }"
       >
-        <img :src="`${appBase}public/catHandTwo.png`" class="tw-w-full tw-absolute" alt="cat">
+        <img :src="`${appBase}/catHandTwo.png`" class="tw-w-full tw-absolute" alt="cat">
       </div>
       <!--  -->
       <div id="wheel" ref="wheel"
@@ -166,7 +166,7 @@ const reset = () => {
         <div 
           class="tw-rounded-full tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full"   
           :style="[bckBoxStyle,{
-            backgroundImage: `url(${appBase}public/wheelBG.png)`,
+            backgroundImage: `url(${appBase}/wheelBG.png)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
@@ -193,7 +193,7 @@ const reset = () => {
       <div @click="start()" id="start" 
         class="tw-absolute tw-cursor-pointer tw-border-gray-400 tw-w-12 tw-z-40 tw-top-[50%]"
       >
-        <img :src="`${appBase}public/arrow.png`" alt="arrow" class="tw-w-full tw-h-full">
+        <img :src="`${appBase}/arrow.png`" alt="arrow" class="tw-w-full tw-h-full">
       </div>
     </div>
   </div>

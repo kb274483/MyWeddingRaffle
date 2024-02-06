@@ -54,7 +54,7 @@ module.exports = configure(function (ctx ) {
         node: 'node20'
       },
       env: {
-        APP_BASE: ctx.dev ? '/' : '/MyWeddingRaffle/'
+        APP_BASE: ctx.dev ? '/public/' : '/MyWeddingRaffle/'
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'
