@@ -34,9 +34,9 @@ const calcRotation = (index) => {
 
 const textPosition = (index,isWin) => {
   const rotate = (-index * 360)/ list.value.length
-  let style = `rotate(${rotate}deg) translateY(-15.5rem)`;
+  let style = `rotate(${rotate}deg) translateY(-10.5rem)`;
   if(isWin){
-    style += `translateY(7rem)`;
+    style += `translateY(2rem)`;
   } 
   return {
     transform: style,
@@ -178,12 +178,15 @@ const reset = () => {
         <!-- 輪盤文字 -->
         <div v-for="(i,index) in list" :key="index" 
           class="tw-absolute" :class="{'tw-z-40': i.isWin}"
-          :style="textPosition(index,i.isWin)"
+          :style="[
+            textPosition(index,i.isWin),
+            i.isWin ? 'writing-mode: horizontal-tb;' : 'writing-mode: vertical-rl;'
+          ]"
         >
           <span class="tw-font-bold tw-transition-all tw-duration-500"
             :class="{
-              'tw-text-8xl tw-text-red-600': i.isWin ,
-              'tw-text-3xl tw-text-gray-700': !i.isWin
+              'tw-text-[6.5rem] tw-text-red-600': i.isWin ,
+              'tw-text-5xl tw-text-gray-700': !i.isWin
             }"
           >
             {{i.title}}
