@@ -52,27 +52,42 @@ const wheel = ref(null)
 onMounted(() => {
   wheel.value = instance.refs.wheel
 })
+// 延遲
+const delay = (sec) => new Promise(resolve => setTimeout(resolve, sec));
 // 開始
-const start = () => {
+const start = async () => {
   let baseRotation = 15;
   let randomStop = Math.floor(Math.random() * 360);
   let totalRotation = baseRotation * 360 + randomStop;
   wheel.value.style.transition = 'transform 5s ease-out';
   wheel.value.style.transform = `rotate(${totalRotation}deg)`;
 
-  setTimeout(() => {
-    showAmei.value = true
-  }, 2500);
-  setTimeout(() => {
-    catHandReady.value = 1
-  }, 3000);
-  setTimeout(() => {
-    catHandReady.value = 2
-  }, 4500);
-  setTimeout(() => {
-    catHandSet.value = true
-  }, 4600);
-  wheel.value.addEventListener('transitionend', wheelStop);
+  // setTimeout(() => {
+  //   showAmei.value = true
+  // }, 2500);
+  // setTimeout(() => {
+  //   catHandReady.value = 1
+  // }, 3000);
+  // setTimeout(() => {
+  //   catHandReady.value = 2
+  // }, 4500);
+  // setTimeout(() => {
+  //   catHandSet.value = true
+  // }, 4600);
+  // wheel.value.addEventListener('transitionend', wheelStop);
+  await delay(2500);
+  showAmei.value = true;
+
+  await delay(500);
+  catHandReady.value = 1;
+
+  await delay(1500);
+  catHandReady.value = 2;
+
+  await delay(100);
+  catHandSet.value = true;
+
+  await new Promise(resolve => wheel.value.addEventListener('transitionend', wheelStop));
 }
 // 轉動結束
 const winItemIndex = ref(0);
