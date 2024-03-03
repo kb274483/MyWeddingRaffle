@@ -1,6 +1,7 @@
 # Welcome to our wedding (weddingroulette)
 
 A Roulette game 
+為了自己的婚禮中場小遊戲而開的，沒什麼特別的就是轉盤配一隻貓！
 
 ## Install the dependencies
 ```bash
