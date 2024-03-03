@@ -57,7 +57,8 @@ const delay = (sec) => new Promise(resolve => setTimeout(resolve, sec));
 // 開始
 const start = async () => {
   let baseRotation = 15;
-  let randomStop = Math.floor(Math.random() * 360);
+  let itemAngle = 360 / 10; 
+  let randomStop = 36 + Math.floor(Math.random() * 10) * itemAngle;
   let totalRotation = baseRotation * 360 + randomStop;
   wheel.value.style.transition = 'transform 5s ease-out';
   wheel.value.style.transform = `rotate(${totalRotation}deg)`;
@@ -193,9 +194,8 @@ const reset = () => {
         </div>
       </div>
       <div @click="start()" id="start" 
-        class="tw-absolute tw-cursor-pointer tw-border-gray-400 tw-w-12 tw-z-40 tw-top-[50%]"
+        class="tw-absolute tw-cursor-pointer tw-border-gray-400 tw-w-16 tw-h-16 tw-z-40 tw-top-[53%]"
       >
-        <img :src="`${appBase}/arrow.png`" alt="arrow" class="tw-w-full tw-h-full">
       </div>
     </div>
   </div>
